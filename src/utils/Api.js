@@ -17,11 +17,17 @@ class Api {
   getUser() {
     return fetch(`${this.url}/users/me`, { headers: this.headers})
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка запроса пользователя: ${err}`);
+      });
   }
 
   getInitialCards() {
     return fetch(`${this.url}/cards`, { headers: this.headers})
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка запроса карточек: ${err}`);
+      });
   }
 
   updateProfileInfo(data) {
@@ -36,6 +42,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка обновления профиля: ${err}`);
+      });
   }
 
   updateProfileAvatar(data) {
@@ -49,6 +58,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка обновления аватара: ${err}`);
+      });
   }
 
   createCard(data) {
@@ -63,6 +75,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка создания карточек: ${err}`);
+      });
   }
 
   deleteCard(id) {
@@ -73,6 +88,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка удаления карточки: ${err}`);
+      });
   }
 
   createLike(id) {
@@ -83,6 +101,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка добавления лайка: ${err}`);
+      });
   }
 
   deleteLike(id) {
@@ -93,6 +114,9 @@ class Api {
       }
     )
       .then(this._handleResponse)
+      .catch((err)=>{
+        console.log(`Ошибка удаления лайка: ${err}`);
+      });
   }
 }
 

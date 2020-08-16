@@ -1,14 +1,12 @@
 import React from 'react';
-import api from '../utils/Api';
+import api from '../utils/api';
 import Card from './Card';
-import avatar from '../images/profile__avatar.jpg';
-
 
 function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
   const [myId, setMyId] = React.useState();
-  const [userName, setUserName] = React.useState('Жак-Ив Кусто');
-  const [userDescription, setUserDescription] = React.useState('Исследователь океана');
-  const [userAvatar, setUserAvatar] = React.useState(avatar);
+  const [userName, setUserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
+  const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -17,9 +15,6 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
       setUserName(result.name);
       setUserDescription(result.about);
       setUserAvatar(result.avatar);
-    })
-    .catch((err)=>{
-      console.log(`Ошибка запроса пользователя: ${err}`);
     });
     }, [])
 
@@ -34,10 +29,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
             cardLikes: obj.likes
           }))
         );
-      })
-      .catch((err)=>{
-        console.log(`Ошибка запроса карточек: ${err}`);
-      })
+      });
       }, [])
 
   return (
