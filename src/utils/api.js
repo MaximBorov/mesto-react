@@ -93,8 +93,9 @@ class Api {
       });
   }
 
-  createLike(id) {
-    return fetch(`${this.url}/cards/likes/${id}`,
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return fetch(`${this.url}/cards/likes/${id}`,
       {
         method: 'PUT',
         headers: this.headers
@@ -104,10 +105,8 @@ class Api {
       .catch((err)=>{
         console.log(`Ошибка добавления лайка: ${err}`);
       });
-  }
-
-  deleteLike(id) {
-    return fetch(`${this.url}/cards/likes/${id}`,
+    } else {
+      return fetch(`${this.url}/cards/likes/${id}`,
       {
         method: 'DELETE',
         headers: this.headers
@@ -117,6 +116,7 @@ class Api {
       .catch((err)=>{
         console.log(`Ошибка удаления лайка: ${err}`);
       });
+    }
   }
 }
 
