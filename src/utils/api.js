@@ -16,18 +16,12 @@ class Api {
 
   getUser() {
     return fetch(`${this.url}/users/me`, { headers: this.headers})
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка запроса пользователя: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   getInitialCards() {
     return fetch(`${this.url}/cards`, { headers: this.headers})
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка запроса карточек: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   updateProfileInfo(data) {
@@ -41,10 +35,7 @@ class Api {
         })
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка обновления профиля: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   updateProfileAvatar(data) {
@@ -53,14 +44,11 @@ class Api {
         method: 'PATCH',
         headers: this.headers,
         body: JSON.stringify({
-          avatar: data.object
+          avatar: data.avatar
         })
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка обновления аватара: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   createCard(data) {
@@ -74,10 +62,7 @@ class Api {
         })
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка создания карточек: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   deleteCard(id) {
@@ -87,10 +72,7 @@ class Api {
         headers: this.headers
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка удаления карточки: ${err}`);
-      });
+      .then(this._handleResponse);
   }
 
   changeLikeCardStatus(id, isLiked) {
@@ -101,10 +83,7 @@ class Api {
         headers: this.headers
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка добавления лайка: ${err}`);
-      });
+      .then(this._handleResponse);
     } else {
       return fetch(`${this.url}/cards/likes/${id}`,
       {
@@ -112,10 +91,7 @@ class Api {
         headers: this.headers
       }
     )
-      .then(this._handleResponse)
-      .catch((err)=>{
-        console.log(`Ошибка удаления лайка: ${err}`);
-      });
+      .then(this._handleResponse);
     }
   }
 }

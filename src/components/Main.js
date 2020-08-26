@@ -22,7 +22,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onCa
         <section className="cards">
           {
           cards.map(({_id, ...props}) =>
-          <Card key={_id} onCardLike={onCardLike} onCardDelete={onCardDelete} handleCardClick={onCardClick} cardId={_id} myId={userContext._id} {...props} />)
+          <Card key={_id} onCardLike={onCardLike} onCardDelete={onCardDelete} handleCardClick={onCardClick} cardId={_id} {...props} />)
           }
         </section>
       </main>

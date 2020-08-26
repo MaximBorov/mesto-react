@@ -19,15 +19,23 @@ function App() {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getUser().then((result) => {
-      setCurrentUser(result);
-    });
+    api.getUser()
+      .then((result) => {
+        setCurrentUser(result);
+      })
+      .catch((err)=>{
+        console.log(`Ошибка запроса пользователя: ${err}`);
+      });
     }, [])
 
   React.useEffect(() => {
-     api.getInitialCards().then((data) => {
-      setCards(data);
-    });
+     api.getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((err)=>{
+        console.log(`Ошибка запроса карточек: ${err}`);
+      });
   }, [])
 
   function handleCardLike(card) {
@@ -36,6 +44,9 @@ function App() {
       .then((newCard) => {
         const newCards = cards.map((c) => c._id === card.cardId ? newCard : c);
         setCards(newCards);
+      })
+      .catch((err)=>{
+        console.log(`Ошибка лайка: ${err}`);
       });
   }
 
@@ -47,6 +58,9 @@ function App() {
         });
         setCards(newCards);
       })
+      .catch((err)=>{
+        console.log(`Ошибка удаления карточки: ${err}`);
+      });
   }
 
   const handleEditProfileClick = () => {
@@ -68,6 +82,9 @@ function App() {
       .then((newProfile) => {
         setCurrentUser(newProfile);
         closeAllPopups();
+      })
+      .catch((err)=>{
+        console.log(`Ошибка обновления профиля: ${err}`);
       });
   };
 
@@ -76,6 +93,9 @@ function App() {
       .then((newAvatar) => {
         setCurrentUser(newAvatar);
         closeAllPopups();
+      })
+      .catch((err)=>{
+        console.log(`Ошибка обновления аватара: ${err}`);
       });
   };
 
@@ -85,6 +105,9 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
+      .catch((err)=>{
+        console.log(`Ошибка создания карточки: ${err}`);
+      });
   };
 
   const closeAllPopups = () => {
