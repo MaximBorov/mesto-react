@@ -7,4 +7,4 @@
 * жизненные циклы компонентов
 * основы React
 
-Ссылка на проект: https://maximborov.github.io/mesto-react/
+Ссылка на проект: https://maximsinyukov.github.io/mesto-react/
